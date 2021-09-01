@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,15 @@ namespace TestTask.Controllers
             _storage = new Storage(options);
         }
 
+        [HttpGet]
+        [Route("api/get-all-tasks")]
+        public string GetAll()
+        {
+            var tasks = _storage.GetTasks();
+            var json = JsonConvert.SerializeObject(tasks, Formatting.Indented);
+            return json;
+        }
 
- 
 
     }
 }
