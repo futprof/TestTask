@@ -36,7 +36,17 @@ namespace TestTask.Models.DB
 
         public Task GetTask(string id)
         {
-            return _ctx.Task.FirstOrDefault(i => i.Id.Equals(id));
+            try
+            {
+                var task = _ctx.Task.FirstOrDefault(i => i.Id.Equals(id));
+                return task;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
 
         public bool ChengeTaskStatus(string id, bool status)
@@ -55,13 +65,46 @@ namespace TestTask.Models.DB
                 }
         }
 
-        public void RemoveTask(string id)
+        public string UpdateTask(Task task)
         {
-            var task = GetTask(id);
-            if (task != null)
+            try
             {
-                _ctx.Task.Remove(task);
-                _ctx.SaveChanges();
+                var storedTask = _ctx.Task.FirstOrDefault(i => i.Id.Equals(task.Id));
+                if (storedTask != null)
+                {
+                    storedTask.Name = task.Name;
+                    storedTask.DueDate = task.DueDate;
+                    _ctx.Task.Update(storedTask);
+                    _ctx.SaveChanges();
+                    return "Success!";
+                }
+                else return "No task to update.";
+            }
+            catch (Exception)
+            {
+                return "Somethisng were wrong...";
+                throw;
+            }            
+        }
+
+        public bool RemoveTask(string id)
+        {
+            try
+            {
+                var task = GetTask(id);
+                if (task != null)
+                {
+                    _ctx.Task.Remove(task);
+                    _ctx.SaveChanges();
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+                //TODO: rework exception handler
             }
         }
     }

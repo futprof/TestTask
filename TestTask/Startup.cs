@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace TestTask
 {
     public class Startup
@@ -25,7 +26,7 @@ namespace TestTask
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<Models.DB.AppContext>(opt => opt.UseSqlServer(connection));
-            services.AddControllersWithViews();
+            services.AddControllersWithViews();          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
