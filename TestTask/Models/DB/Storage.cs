@@ -21,6 +21,7 @@ namespace TestTask.Models.DB
             Task newTask = new Task
             {
                 Id = Guid.NewGuid().ToString(),
+                Name = task.Name,
                 DueDate = task.DueDate,
                 Status = Status.Active
             };

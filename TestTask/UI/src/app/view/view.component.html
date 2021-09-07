@@ -1,0 +1,26 @@
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Task Name</th>
+                <th scope="col">Due Date</th>
+                <th scope="col">Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of taskList">
+                <th scope="row">
+                    <a [routerLink]="['/update']">{{task.Name}}</a>
+                </th>
+                <td>{{task.DueDate | date: 'MM/dd/yyyy'}}</td>
+                <td>
+                    <div  class="form-check">
+                        <input *ngIf="task.Status" id="{{task.Id}}" (change)="fieldsChange($event)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                        <input *ngIf="!task.Status" id="{{task.Id}}" (change)="fieldsChange($event)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

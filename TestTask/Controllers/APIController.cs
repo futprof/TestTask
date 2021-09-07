@@ -26,7 +26,7 @@ namespace TestTask.Controllers
             return json;
         }
 
-        [HttpPost]
+        [HttpDelete]
         [Route("api/del-task")]
         public bool RemoveTask(string id )
         {
@@ -34,8 +34,8 @@ namespace TestTask.Controllers
         }
 
         [HttpPost]
-        [Route("api/chandge-status")]
-        public bool ChandgeTaskStatus(string id, bool status)
+        [Route("api/change-status")]
+        public bool ChangeTaskStatus(string id, bool status)
         {            
             return _storage.ChengeTaskStatus(id, status);
         }
@@ -53,7 +53,19 @@ namespace TestTask.Controllers
         [Route("api/update-task")]
         public string UpdateTask(Models.Task task)
         {
-            return JsonConvert.SerializeObject(_storage.UpdateTask(task));
+            return _storage.UpdateTask(task);
+        }
+
+        [HttpPost]
+        [Route("api/add-task")]
+        public JsonResult AddTask(Models.Task task)
+        {
+            if (!ModelState.IsValid)
+            {
+                return new JsonResult("Task is not valid!");
+            }
+            _storage.AddTask(task);
+            return new JsonResult("Sucess!");
         }
 
     }

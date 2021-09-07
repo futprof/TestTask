@@ -1,0 +1,33 @@
+
+<div class="main-content container">
+  <div class="row">
+      <div class="col-md-12">
+        <div class="card card-default">
+          <div class="card-header card-header-divider">Add a new Task...</div>
+          <div class="card-body pl-sm-5">
+            <form [formGroup]="checkoutForm"  (ngSubmit) = "onClickSubmit()">
+              <div class="form-group row">
+                <label class="col-12 col-sm-3 col-form-label text-sm-right">Task Name</label>
+                <div class="col-12 col-sm-8 col-lg-6">
+                  <input class="form-control" type="text" required id="name"  formControlName="name" >
+                </div>
+              </div>
+  
+              <div class="form-group row">
+                <label class="col-12 col-sm-3 col-form-label text-sm-right">Due Date</label>
+                <div class="col-12 col-sm-8 col-lg-6">
+                  <input type="date" min="{{minDate | date:'yyyy-MM-dd'}}" required id="dueDate"  formControlName="dueDate">
+                </div>
+              </div>
+              <div class="form-group row">
+                  <label class="col-12 col-sm-3 col-form-label text-sm-right"></label>
+                <div class="col-12 col-sm-8 col-lg-6">
+                  <button class="btn btn-space btn-primary" type="submit">Add Task</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
