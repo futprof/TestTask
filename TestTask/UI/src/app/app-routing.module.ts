@@ -6,10 +6,11 @@ import { ViewComponent } from './view/view.component';
 import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
-  {path:'menu', component:MenuComponent},
-  {path:'add', component:AddComponent},
-  {path:'view', component:ViewComponent},
-  {path:'update', component:UpdateComponent}
+  { path: '', redirectTo: '/menu', pathMatch: 'full' },
+  { path:'menu', component:MenuComponent},
+  { path:'add', component:AddComponent},
+  { path:'view', component:ViewComponent},
+  { path:'update/:id', component:UpdateComponent}
 ];
 
 @NgModule({

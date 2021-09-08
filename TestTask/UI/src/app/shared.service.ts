@@ -22,4 +22,16 @@ export class SharedService {
   addTask(val:any){
     return this.http.post(this.APIURl + '/add-task', val);
   }
+
+  getTask(id:string|null){
+    return this.http.get<any>(this.APIURl + '/get-task/' + id);
+  }
+
+  updateTask(val:any){
+    return this.http.post(this.APIURl + '/update-task', val);
+  }
+
+  deleteTask(id:string|null){
+    return this.http.delete<any>(this.APIURl + '/del-task/' + id);
+  }
 }

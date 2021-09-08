@@ -11,7 +11,7 @@
         <tbody>
             <tr *ngFor="let task of taskList">
                 <th scope="row">
-                    <a [routerLink]="['/update']">{{task.Name}}</a>
+                    <a routerLink="/update/{{task.Id}}" >{{task.Name}}</a>
                 </th>
                 <td>{{task.DueDate | date: 'MM/dd/yyyy'}}</td>
                 <td>

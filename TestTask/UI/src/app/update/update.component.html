@@ -1,1 +1,37 @@
-<p>update works</p>
+
+<div class="main-content container">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="card card-default">
+            <div class="card-header card-header-divider">Edit Task...</div>
+            <div class="card-body pl-sm-5">
+              <form [formGroup]="checkoutForm"  >
+                <div class="form-group row">
+                  <label class="col-12 col-sm-3 col-form-label text-sm-right">Task Name</label>
+                  <div class="col-12 col-sm-8 col-lg-6">
+                    <input hidden  type="text" id="id"  formControlName="id" >
+                    <input class="form-control" type="text" required id="name"  formControlName="name" >
+                  </div>
+                </div>
+    
+                <div class="form-group row">
+                  <label class="col-12 col-sm-3 col-form-label text-sm-right">Due Date</label>
+                  <div class="col-12 col-sm-8 col-lg-6">
+                    <input type="date" min="{{minDate | date:'yyyy-MM-dd'}}" required id="dueDate"  formControlName="dueDate">
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-12 col-sm-3 col-form-label text-sm-right"></label>
+                  <div class="col-12 col-sm-8 col-lg-3">
+                    <button (click)="onUpdate()" class="btn btn-space btn-primary" type="button">update Task</button>
+                  </div>
+                  <div class="col-12 col-sm-8 col-lg-3">
+                    <button (click)="onDelete()" type="button" class="btn btn-space btn-danger" >Delete Task</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

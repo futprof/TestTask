@@ -31,8 +31,7 @@ export class ViewComponent implements OnInit {
     formData.append("id", values.currentTarget.id);
     formData.append("status", values.currentTarget.checked);
     
-    this.service.changeStatus(formData).subscribe(x=>{
-      console.log(x);});    
+    this.service.changeStatus(formData).subscribe(x=>{console.log(x);});    
 
   }
 

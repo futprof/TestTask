@@ -27,7 +27,7 @@ namespace TestTask.Controllers
         }
 
         [HttpDelete]
-        [Route("api/del-task")]
+        [Route("api/del-task/{id}")]
         public bool RemoveTask(string id )
         {
             return _storage.RemoveTask(id);            
@@ -41,7 +41,7 @@ namespace TestTask.Controllers
         }
 
         [HttpGet]
-        [Route("api/get-task")]
+        [Route("api/get-task/{id}")]
         public string GetTask(string id)
         {
             var task = _storage.GetTask(id);
