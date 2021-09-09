@@ -3,9 +3,42 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Task Name</th>
-                <th scope="col">Due Date</th>
-                <th scope="col">Completed</th>
+                <th scope="col">Task Name
+                    <button type="button" class="btn btn-space" (click)="sortResult('Name', true)" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                      </svg>
+                    </button>
+                    <button type="button" class="btn btn-space" (click)="sortResult('Name', false)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                          </svg>
+                    </button>
+                </th>
+                <th scope="col">Due Date
+                    <button type="button" class="btn btn-space" (click)="sortResult('DueDate', true)" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                      </svg>
+                    </button>
+                    <button type="button" class="btn btn-space" (click)="sortResult('DueDate', false)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                          </svg>
+                    </button>
+                </th>
+                <th scope="col">Completed
+                    <button type="button" class="btn btn-space" (click)="sortResult('Status', true)" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                      </svg>
+                    </button>
+                    <button type="button" class="btn btn-space" (click)="sortResult('Status', false)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                          </svg>
+                    </button>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -16,10 +49,13 @@
                 <td>{{task.DueDate | date: 'MM/dd/yyyy'}}</td>
                 <td>
                     <div  class="form-check">
-                        <input *ngIf="task.Status" id="{{task.Id}}" (change)="fieldsChange($event)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                        <input *ngIf="!task.Status" id="{{task.Id}}" (change)="fieldsChange($event)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                        <input *ngIf="task.Status" id="{{task.Id}}" (change)="statusChange($event)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                        <input *ngIf="!task.Status" id="{{task.Id}}" (change)="statusChange($event)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
                     </div>
                 </td>
+            </tr>
+            <tr>
+                
             </tr>
         </tbody>
     </table>
