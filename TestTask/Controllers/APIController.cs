@@ -17,11 +17,11 @@ namespace TestTask.Controllers
             _storage = new Storage(options);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/get-all-tasks")]
-        public string GetAll()
+        public string GetAll(int page, int results)
         {
-            var tasks = _storage.GetTasks();
+            var tasks = _storage.GetTasks(page, results);
             var json = JsonConvert.SerializeObject(tasks, Formatting.Indented);
             return json;
         }

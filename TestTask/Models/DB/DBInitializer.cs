@@ -16,12 +16,14 @@ namespace TestTask.Models.DB
 
 				//create some default tasks
 				var tasks = new List<Task>();
-				for (int i = 1; i < 21; i++)
+				var dueDate = DateTime.Now;
+				for (int i = 1; i < 350; i++)
 				{
+
 					tasks.Add(new Task() {
 						Id = Guid.NewGuid().ToString(),
 						Name = "Task#" + i,
-						DueDate = new DateTime(2021, 10, i),
+						DueDate = dueDate.AddDays(i),
 						Status = Status.Active
 					});
 				}

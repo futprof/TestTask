@@ -30,9 +30,22 @@ namespace TestTask.Models.DB
             return newTask.Id;
         }
 
-        public List<Task> GetTasks()
+        public List<Task> GetTasks(int page, int results)
         {
-            return _ctx.Task.ToList();
+            try
+            {
+                int skipRecords;
+                if (page <= 1) skipRecords = 0;                
+                else skipRecords = page * results;
+                return _ctx.Task.OrderBy(x => x.DueDate)
+                                .Skip(skipRecords)
+                                .Take(results)
+                                .ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }            
         }
 
         public Task GetTask(string id)
