@@ -11,6 +11,7 @@ import { SharedService } from './shared.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -21,7 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ViewComponent,
     UpdateComponent,
     AddComponent,
-    MenuComponent
+    MenuComponent    
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-     
+    NgxPaginationModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

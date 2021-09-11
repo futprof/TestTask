@@ -36,7 +36,7 @@ namespace TestTask.Models.DB
             {
                 int skipRecords;
                 if (page <= 1) skipRecords = 0;                
-                else skipRecords = page * results;
+                else skipRecords = page * results- results;
                 return _ctx.Task.OrderBy(x => x.DueDate)
                                 .Skip(skipRecords)
                                 .Take(results)
@@ -77,6 +77,13 @@ namespace TestTask.Models.DB
                 {
                     return false;
                 }
+        }
+
+        internal ToDoList GetTasksAmount()
+        {
+            var toDoList = new ToDoList();
+            toDoList.TasksAmount = _ctx.Task.Count();
+            return toDoList;
         }
 
         public string UpdateTask(Task task)
@@ -121,5 +128,7 @@ namespace TestTask.Models.DB
                 //TODO: rework exception handler
             }
         }
+
+         
     }
 }

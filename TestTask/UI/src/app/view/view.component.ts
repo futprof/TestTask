@@ -3,6 +3,7 @@ import { SharedService } from '../shared.service';
 
 
 
+
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
@@ -11,17 +12,27 @@ import { SharedService } from '../shared.service';
 export class ViewComponent implements OnInit {
 
   constructor(private service:SharedService) { }
-
+ 
+  tasksAmount:number = 0;
+  page:number = 1;
+  pageSize:number = 10;
+  pageSizes:Array<number> = [10, 50, 100];;
 
   ngOnInit(): void {
+    this.getTasksAmount();
     this.refreshTasksList();
+    
   }
 
   taskList:any=[];
   taskListPoor:any=[];
 
   refreshTasksList(){
-    this.service.getAllTasks().subscribe(data=>{
+    var formData:any = new FormData();
+    formData.append('page', this.page);
+    formData.append('results', this.pageSize);
+
+    this.service.getAllTasks(formData).subscribe(data=>{
       this.taskList = data;
       this.taskListPoor = data;
     });
@@ -53,4 +64,21 @@ export class ViewComponent implements OnInit {
     });
   }
 
+  getTasksAmount(){
+    this.service.getTaskAmount().subscribe(data=>{
+      this.tasksAmount = data.TasksAmount;
+    });
+  }
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.refreshTasksList();
+  }
+
+  
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;   
+    this.refreshTasksList();
+  }
 }

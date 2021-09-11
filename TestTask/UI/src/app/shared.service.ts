@@ -11,8 +11,8 @@ export class SharedService {
 
   constructor(private http:HttpClient) { }
 
-  getAllTasks():Observable<any[]>{
-    return this.http.get<any[]>(this.APIURl + '/get-all-tasks');
+  getAllTasks(val:any):Observable<any[]>{
+    return this.http.post<any[]>(this.APIURl + '/get-all-tasks', val);
   }
 
   changeStatus(val:any){
@@ -33,5 +33,9 @@ export class SharedService {
 
   deleteTask(id:string|null){
     return this.http.delete<any>(this.APIURl + '/del-task/' + id);
+  }
+
+  getTaskAmount(){
+    return this.http.get<any>(this.APIURl + '/tasks-amount');
   }
 }

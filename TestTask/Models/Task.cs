@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TestTask.Models
 {
-    [JsonObject(IsReference = true)]
+    [JsonObject]
     public class Task
     {
         [Key]        

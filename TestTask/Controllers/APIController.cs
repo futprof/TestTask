@@ -28,15 +28,15 @@ namespace TestTask.Controllers
 
         [HttpDelete]
         [Route("api/del-task/{id}")]
-        public bool RemoveTask(string id )
+        public bool RemoveTask(string id)
         {
-            return _storage.RemoveTask(id);            
+            return _storage.RemoveTask(id);
         }
 
         [HttpPost]
         [Route("api/change-status")]
         public bool ChangeTaskStatus(string id, bool status)
-        {            
+        {
             return _storage.ChengeTaskStatus(id, status);
         }
 
@@ -68,5 +68,12 @@ namespace TestTask.Controllers
             return new JsonResult("Sucess!");
         }
 
+        [HttpGet]
+        [Route("api/tasks-amount")]
+        public string GetTasksAmount()
+        {
+            var json = JsonConvert.SerializeObject(_storage.GetTasksAmount());
+            return json;
+        }
     }
 }
