@@ -75,5 +75,16 @@ namespace TestTask.Controllers
             var json = JsonConvert.SerializeObject(_storage.GetTasksAmount());
             return json;
         }
+
+        [HttpGet]
+        [Route("api/search-by-name/{name}")]
+        public string SearchTask(string name)
+        {
+            var tasks = _storage.SearchTask(name);
+            var json = JsonConvert.SerializeObject(tasks, Formatting.Indented);
+            return json;
+        }
+
+
     }
 }

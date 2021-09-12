@@ -1,4 +1,13 @@
 <div class="container">
+    <h2> View all Tasks</h2>
+    <div class="row">
+        <div class="input-group md-3">
+            <input type="text" class="form-control" placeholder="Search by Task name" [(ngModel)]="taskName">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button"  (click)="searchByName()" >Search</button>              
+            </div>     
+        </div>
+    </div>
 
     <table class="table">
         <thead>

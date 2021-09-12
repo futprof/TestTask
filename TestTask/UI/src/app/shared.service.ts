@@ -38,4 +38,8 @@ export class SharedService {
   getTaskAmount(){
     return this.http.get<any>(this.APIURl + '/tasks-amount');
   }
+
+  searchTaskByName(name:string){
+    return this.http.get<any>(this.APIURl + '/search-by-name/' + name );
+  }
 }

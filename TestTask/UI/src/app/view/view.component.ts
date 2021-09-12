@@ -13,10 +13,11 @@ export class ViewComponent implements OnInit {
 
   constructor(private service:SharedService) { }
  
+  taskName:string="";
   tasksAmount:number = 0;
   page:number = 1;
   pageSize:number = 10;
-  pageSizes:Array<number> = [10, 50, 100];;
+  pageSizes:Array<number> = [10, 50, 100];
 
   ngOnInit(): void {
     this.getTasksAmount();
@@ -80,5 +81,13 @@ export class ViewComponent implements OnInit {
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;   
     this.refreshTasksList();
+  }
+
+
+  searchByName(){
+    this.service.searchTaskByName(this.taskName).subscribe(data=>{
+      this.taskList = data;
+      this.taskListPoor = data;
+    });
   }
 }

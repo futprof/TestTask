@@ -36,7 +36,7 @@ namespace TestTask.Models.DB
             {
                 int skipRecords;
                 if (page <= 1) skipRecords = 0;                
-                else skipRecords = page * results- results;
+                else skipRecords = page * results- results  ;
                 return _ctx.Task.OrderBy(x => x.DueDate)
                                 .Skip(skipRecords)
                                 .Take(results)
@@ -108,6 +108,12 @@ namespace TestTask.Models.DB
             }            
         }
 
+        public List<Task> SearchTask(string name)
+        { 
+            var tasks= _ctx.Task.Where(n => EF.Functions.Like(n.Name, $"%{name}%")).ToList();
+            return tasks;
+        }
+
         public bool RemoveTask(string id)
         {
             try
@@ -127,8 +133,6 @@ namespace TestTask.Models.DB
                 throw;
                 //TODO: rework exception handler
             }
-        }
-
-         
+        }        
     }
 }
