@@ -85,6 +85,15 @@ namespace TestTask.Controllers
             return json;
         }
 
+        [HttpGet]
+        [Route("api/search-by-status/{status}")]
+        public string SearchTask(bool status)
+        {
+            var tasks = _storage.SearchTask(status);
+            var json = JsonConvert.SerializeObject(tasks, Formatting.Indented);
+            return json;
+        }
+
 
     }
 }

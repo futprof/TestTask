@@ -114,6 +114,12 @@ namespace TestTask.Models.DB
             return tasks;
         }
 
+        public List<Task> SearchTask(bool status)
+        {
+            var tasks = _ctx.Task.Where(s => s.Status.Equals(status==true?Status.Active:Status.Done)).ToList();
+            return tasks;
+        }
+
         public bool RemoveTask(string id)
         {
             try

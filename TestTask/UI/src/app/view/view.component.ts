@@ -15,6 +15,7 @@ export class ViewComponent implements OnInit {
  
   taskName:string="";
   tasksAmount:number = 0;
+  filterStatus:boolean = true;
   page:number = 1;
   pageSize:number = 10;
   pageSizes:Array<number> = [10, 50, 100];
@@ -86,6 +87,15 @@ export class ViewComponent implements OnInit {
 
   searchByName(){
     this.service.searchTaskByName(this.taskName).subscribe(data=>{
+      this.taskList = data;
+      this.taskListPoor = data;
+    });
+  }
+
+  filterTask(status:boolean){
+    this.service.filterByStatus(status).subscribe(data=>{
+      this.filterStatus = !status;
+      console.log(this.filterStatus);
       this.taskList = data;
       this.taskListPoor = data;
     });

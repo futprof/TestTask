@@ -42,4 +42,8 @@ export class SharedService {
   searchTaskByName(name:string){
     return this.http.get<any>(this.APIURl + '/search-by-name/' + name );
   }
+
+  filterByStatus(status:boolean){
+    return this.http.get<any>(this.APIURl + '/search-by-status/' + status);
+  }
 }
